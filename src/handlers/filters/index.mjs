@@ -1,14 +1,13 @@
-import { Router } from "express";
-import applyFiltersHandler from "./applyFiltersHandler.mjs";
+import { Router } from 'express';
+import applyFiltersHandler from './applyFiltersHandler.mjs';
 
 const router = Router();
 
-router.get("/", (req,res) => {
-    res.send("ok images GET");
-})
+// eslint-disable-next-line
+router.get('/', (req,res) => {
+  res.send('ok images GET');
+});
 
-router.post("/", applyFiltersHandler);
-
-
+router.post('/', applyFiltersHandler);
 
 export default router;
