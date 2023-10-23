@@ -1,3 +1,7 @@
-export const PORT = process.env.PORT || 5001;
+import dotenv from 'dotenv';
 
-export default PORT;
+dotenv.config();
+
+export const {
+  MONGO_URI, PORT, MINIO_HOST, MINIO_ACCESS_KEY, MINIO_SECRET_KEY,
+} = process.env;
