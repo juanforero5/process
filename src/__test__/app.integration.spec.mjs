@@ -1,6 +1,8 @@
+// eslint-disable-next-line
 import {
-  describe, jest, expect, beforeEach, afterEach, test,
+  describe, expect, beforeEach, afterEach, test,
 } from '@jest/globals';
+// eslint-disable-next-line
 import supertest from 'supertest';
 import app from '../app.mjs';
 import { startConnection, closeConnection } from '../mongo/index.mjs';

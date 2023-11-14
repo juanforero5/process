@@ -1,15 +1,21 @@
 import Express from 'express';
 import bodyParser from 'body-parser';
 import Boom from '@hapi/boom';
+import process from 'process';
 import FiltersRouter from './handlers/filters/index.mjs';
 import buildContainer from './container/buildContainer.mjs';
 
 const app = Express();
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(buildContainer);
 
 app.get('/', (req, res) => {
-  res.send('ok');
+  res.json({
+    status: 'ok',
+    pid: process.pid,
+  });
 });
 
 app.use('/images', FiltersRouter);
