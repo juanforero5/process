@@ -44,7 +44,7 @@ class ProcessService {
 
         // filter and upload imgs
         const filteredImgData = await Promise.all(filters.map(async (f) => {
-          const filteredImgBuffer = await this._applyFilter(i.buffer, f);
+          const filteredImgBuffer = await this.applyFilter(i.buffer, f);
           const [imgName, ext] = i.originalname.split('.');
           const filteredImgName = `${imgName}-${f}.${ext}`;
           const url = await this.minioService.saveImage(filteredImgBuffer, filteredImgName);
@@ -59,12 +59,13 @@ class ProcessService {
     return processData;
   }
 
-  async _applyFilter(imgBuffer, filter) {
-    if (filter === 'blur') { return await sharp(imgBuffer).blur(5).toBuffer(); }
+  // eslint-disable-next-line
+  async applyFilter(imgBuffer, filter) {
+    if (filter === 'blur') { return sharp(imgBuffer).blur(5).toBuffer(); }
 
-    if (filter === 'negative') { return await sharp(imgBuffer).negate().toBuffer(); }
+    if (filter === 'negative') { return sharp(imgBuffer).negate().toBuffer(); }
 
-    if (filter === 'greyscale') { return await sharp(imgBuffer).greyscale().toBuffer(); }
+    if (filter === 'greyscale') { return sharp(imgBuffer).greyscale().toBuffer(); }
   }
 }
 
