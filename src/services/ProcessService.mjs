@@ -31,6 +31,7 @@ class ProcessService {
     const sizeSum = images.reduce((acc, curr) => acc + curr.size, 0);
     console.log(sizeSum);
 
+    // validate the weight of the image
     if (sizeSum > 5e+7) {
       throw Boom.badData('Exceeded size limit 50MB');
     }

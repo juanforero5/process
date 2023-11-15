@@ -59,6 +59,7 @@ class MinioService {
         Body: imageBuffer,
       }));
 
+      // 86400 = 1 Day
       const url = `http://localhost:9000/images/${name}`;
       const s3ObjectUrl = parseUrl(url);
       // eslint-disable-next-line
